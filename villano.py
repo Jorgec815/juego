@@ -1,6 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 from pygame import *
+from random import *
 import util
 
 class Villano(Sprite):
@@ -12,5 +13,10 @@ class Villano(Sprite):
 		self.velocidad=vel
         
 	def update(self):
-		self.rect.y += self.velocidad 
-		self.rect.y = self.rect.y % 640
+		self.rect.x -= self.velocidad 
+		self.rect.x = self.rect.x % 640
+		teclas = pygame.key.get_pressed()
+		if teclas[K_LEFT] and self.velocidad > 1:
+			self.velocidad = self.velocidad-1 
+		elif teclas[K_RIGHT] and self.velocidad < 15:
+			self.velocidad = self.velocidad+1

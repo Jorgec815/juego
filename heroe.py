@@ -18,18 +18,6 @@ class Heroe(Sprite):
 	def update(self):
 		teclas = pygame.key.get_pressed()
 		if self.vida > 0:					
-			if teclas[K_LEFT] and self.rect.x>=10:
-				self.rect.x -= 10
-				self.image = self.imagenes[1]
-				if self.rect.x==0 and self.estado == "izquierda":
-					self.puntos = self.puntos + 1
-					self.estado = "derecha"
-			elif teclas[K_RIGHT] and self.rect.x<=640-self.rect.width:
-				self.rect.x += 10
-				self.image = self.imagenes[0]
-				if self.rect.x==570 and self.estado == "derecha":
-					self.puntos = self.puntos + 1
-					self.estado = "izquierda"
 			if teclas[K_UP] and self.rect.y>=10:
 				self.rect.y -= 10
 				self.image = self.imagenes[0]
