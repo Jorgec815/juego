@@ -12,11 +12,12 @@ class Villano(Sprite):
 		self.rect.move_ip(coord[0], coord[0])
 		self.velocidad=vel
         
-	def update(self):
-		self.rect.x -= self.velocidad 
-		self.rect.x = self.rect.x % 640
-		teclas = pygame.key.get_pressed()
-		if teclas[K_LEFT] and self.velocidad > 1:
-			self.velocidad = self.velocidad-1 
-		elif teclas[K_RIGHT] and self.velocidad < 15:
-			self.velocidad = self.velocidad+1
+	def update(self, heroe):
+		if heroe.vida > 0:
+			self.rect.x -= self.velocidad
+			teclas = pygame.key.get_pressed()
+			if teclas[K_a] and self.velocidad > 1:
+				self.velocidad = self.velocidad-1 
+			elif teclas[K_d] and self.velocidad < 10:
+				self.velocidad = self.velocidad+1
+		
